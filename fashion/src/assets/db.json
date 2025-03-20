@@ -1,0 +1,20 @@
+{
+  "users": [
+    {
+      "username": "prerna gupta",
+      "mobileNo": "9666555665",
+      "emailId": "prernag022@gmail.com",
+      "password": "PRer1009",
+      "confirmPassword": "PRer1009",
+      "id": 1
+    },
+    {
+      "username": "sumit gupta",
+      "mobileNo": "7887776876",
+      "emailId": "sumit@gmail.com",
+      "password": "Sumit123",
+      "confirmPassword": "Sumit123",
+      "id": 2
+    }
+  ]
+}
