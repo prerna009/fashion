@@ -4,5 +4,6 @@ export class User {
         public emailId:string,
         public mobileNo:string,
         public password:string,
+        public role: string
     ){};
 }

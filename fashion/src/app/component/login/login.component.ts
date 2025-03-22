@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { UserService } from '../../core/services/user.service';
+import { AuthService } from '../../core/services/auth.service';
 import { map } from 'rxjs';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
@@ -15,7 +15,7 @@ export class LoginComponent {
 
   constructor(
     private fb: FormBuilder,
-    private userService: UserService,
+    private authService: AuthService,
     private toaster: ToastrService,
     private router:Router
   ) {
@@ -28,9 +28,9 @@ export class LoginComponent {
   onLogin() {
     if (this.loginForm.invalid) return;
     const {emailId, password} = this.loginForm.value;
-    this.userService.login(emailId, password).subscribe({
+    this.authService.login(emailId, password).subscribe({
       next: (res) => {
-        if (res) {
+        if (res && res.token) {
           this.toaster.success('User Login Successfully');
           this.router.navigate(['/home']); 
         } else {

@@ -1,0 +1,42 @@
+<nav class="navbar-container">
+    <!-- Logo and Main Menu -->
+    <div class="navbar-logo">
+        <div class="name-logo">
+            <img src="assets/images/logo.png" style="width: 20%;" />
+            <span>ashion</span>
+        </div>
+        <div class="navbar-list">
+            <a routerLink="/men">MEN</a>
+            <a routerLink="/women">WOMEN</a>
+            <a routerLink="/kids">KIDS</a>
+            <a routerLink="/home-living">HOME & LIVING</a>
+            <a routerLink="/beauty">BEAUTY</a>
+        </div>
+    </div>
+
+    <!-- Search Bar -->
+    <div class="d-flex align-items-center searchbar-container">
+        <mat-icon fontIcon="search"></mat-icon>
+        <input type="text" class="searchbar-input" placeholder="Search for products, brands and more" />
+    </div>
+
+    <!-- Right Section (User Info, Cart, Logout) -->
+    <div class="right-section">
+        <div class="display-name" *ngIf="isLoggedIn">
+            <span>Welcome, {{ username | titlecase }}</span>
+        </div>
+        <div *ngIf="isLoggedIn; else loginButton">
+            <button (click)="logout()">Logout</button>
+        </div>
+        <ng-template #loginButton>
+            <a routerLink="/login">Login</a>
+        </ng-template>
+
+        <!-- <div class="cart-section">
+            <a routerLink="/cart">
+                <mat-icon fontIcon="shopping_cart"></mat-icon>
+                Cart ({{ cartItemCount }})
+            </a>
+        </div> -->
+    </div>
+</nav>

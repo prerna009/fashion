@@ -6,7 +6,7 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
-import { UserService } from '../../core/services/user.service';
+import { AuthService } from '../../core/services/auth.service';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
 
@@ -20,7 +20,7 @@ export class RegisterComponent {
 
   constructor(
     private fb: FormBuilder,
-    private userService: UserService,
+    private authService: AuthService,
     private toaster: ToastrService,
     private router: Router
   ) {
@@ -41,7 +41,9 @@ export class RegisterComponent {
 
   onSubmit() {
     if (this.regForm.invalid) return;
-    this.userService.register(this.regForm.value).subscribe({
+    const formData = { ...this.regForm.value }; 
+    delete formData.confirmPassword;
+    this.authService.register(formData).subscribe({
       next: (res) => {
         this.toaster.success('User registered successfully');
         this.router.navigate(['/login']);
